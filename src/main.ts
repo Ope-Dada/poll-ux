@@ -16,6 +16,11 @@ RENDERERS.rg = rRg;
 import { doVote, toggleComments, toggleForm, doComment, aiInfo } from './ui/card.js';
 import { go, toggleMnav, closeMnav } from './ui/nav.js';
 
+function handleSearch(q: string) {
+    setF({ q });
+    RENDERERS.polls();
+}
+
 window.doVote = doVote;
 window.toggleComments = toggleComments;
 window.toggleForm = toggleForm;
@@ -39,6 +44,15 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
 document.addEventListener('DOMContentLoaded', async () => {
     getC();
     rHome();
+
+    // ✅ ADD THIS HERE
+    const input = document.getElementById('search') as HTMLInputElement | null;
+    if (input) {
+        input.addEventListener('input', () => {
+            handleSearch(input.value);
+        });
+    }
+
     await loadFromSupabase();
     subscribeRealtime();
 });
