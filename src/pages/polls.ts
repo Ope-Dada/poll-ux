@@ -76,7 +76,6 @@ export function rPolls(): void {
     const total = POLS.reduce((a, p) => { const cv = c[p.id] || { s: 0, o: 0 }; return a + cv.s + cv.o }, 0);
     const sbTotal = document.getElementById('sb-total'); if (sbTotal) sbTotal.textContent = fmt(total);
     const sbPols = document.getElementById('sb-pols'); if (sbPols) sbPols.textContent = String(POLS.length);
-    const sbCmts = document.getElementById('sb-cmts'); if (sbCmts) sbCmts.textContent = String(totalComments());
     const sbYours = document.getElementById('sb-yours'); if (sbYours) sbYours.textContent = String(votes.length);
 
     // Sidebar top 5 by support %
