@@ -14,7 +14,6 @@ export function setF(f: string, btn: HTMLElement): void {
 }
 
 export function rPolls(): void {
-
     const party = ((document.getElementById('sel-party') as HTMLSelectElement)?.value || '').trim();
     const region = ((document.getElementById('sel-region') as HTMLSelectElement)?.value || '').trim();
     const sort = ((document.getElementById('sel-sort') as HTMLSelectElement)?.value || 'trending');
