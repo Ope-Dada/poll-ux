@@ -14,7 +14,7 @@ export function setF(f: string, btn: HTMLElement): void {
 }
 
 export function rPolls(): void {
-    const q = ((document.getElementById('srch') as HTMLInputElement)?.value || '').toLowerCase().trim();
+
     const party = ((document.getElementById('sel-party') as HTMLSelectElement)?.value || '').trim();
     const region = ((document.getElementById('sel-region') as HTMLSelectElement)?.value || '').trim();
     const sort = ((document.getElementById('sel-sort') as HTMLSelectElement)?.value || 'trending');
@@ -30,10 +30,7 @@ export function rPolls(): void {
     // Region filter
     if (region) list = list.filter(p => p.region === region);
     // Search
-    if (q) list = list.filter(p =>
-        p.name.toLowerCase().includes(q) || p.party.toLowerCase().includes(q) ||
-        p.state.toLowerCase().includes(q) || p.role.toLowerCase().includes(q) ||
-        p.region.toLowerCase().includes(q));
+    
     // Sort
     list.sort((a, b) => {
         const ca = c[a.id] || { s: 0, o: 0 }, cb = c[b.id] || { s: 0, o: 0 };
