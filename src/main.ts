@@ -41,14 +41,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     getC();
     rHome();
 
-    // FIX: correct ID ('srch' not 'search') + handle both input and change events
-    // (type="search" inputs fire 'change' not 'input' when the ✕ clear button is clicked)
-    const srch = document.getElementById('srch') as HTMLInputElement | null;
-    if (srch) {
-        srch.addEventListener('input', () => rPolls());
-        srch.addEventListener('change', () => rPolls());
+    // ✅ ADD THIS HERE
+    const input = document.getElementById('search') as HTMLInputElement | null;
+    if (input) {
+        input.addEventListener('input', () => {
+            handleSearch(input.value);
+        });
     }
-
     await loadFromSupabase();
     subscribeRealtime();
 });
