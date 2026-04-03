@@ -41,13 +41,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     getC();
     rHome();
 
-    // ✅ ADD THIS HERE
-    const input = document.getElementById('search') as HTMLInputElement | null;
-    if (input) {
-        input.addEventListener('input', () => {
-            handleSearch(input.value);
-        });
-    }
     await loadFromSupabase();
     subscribeRealtime();
 });
