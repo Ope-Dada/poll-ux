@@ -60,18 +60,3 @@ export type RegionalBiasMap = {
   [politicianId: string]: Partial<Record<Zone, number>>;
 };
 
-// Window augmentation for inline onclick handlers
-declare global {
-  interface Window {
-    doVote: (pid: string, t: VoteDirection, e: Event) => void;
-    toggleComments: (pid: string) => void;
-    toggleForm: (pid: string) => void;
-    doComment: (pid: string) => void;
-    aiInfo: (pid: string, e: Event) => void;
-    go: (id: PageId) => void;
-    setF: (f: string, btn: HTMLElement) => void;
-    setLb: (m: LeaderboardMode, btn: HTMLElement) => void;
-    toggleMnav: () => void;
-    closeMnav: () => void;
-  }
-}
