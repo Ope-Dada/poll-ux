@@ -17,9 +17,6 @@ import { doVote, aiInfo } from './ui/card.js';
 import { go, toggleMnav, closeMnav } from './ui/nav.js';
 
 window.doVote = doVote;
-window.toggleComments = toggleComments;
-window.toggleForm = toggleForm;
-window.doComment = doComment;
 window.aiInfo = aiInfo;
 window.go = go;
 window.setF = setF;
