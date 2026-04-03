@@ -1,5 +1,5 @@
 import { getC, getUV } from '../lib/storage.js';
-import { fmt, pct, ini, totalComments } from '../lib/helpers.js';
+import { fmt, pct, ini } from '../lib/helpers.js';
 import { POLS } from '../data/politicians.js';
 import { card } from '../ui/card.js';
 import { go } from '../ui/nav.js';
