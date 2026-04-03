@@ -1,3 +1,15 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig({});
+export default defineConfig({
+  build: {
+    target: 'es2015',
+    minify: 'terser',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          supabase: ['@supabase/supabase-js']
+        }
+      }
+    }
+  }
+});

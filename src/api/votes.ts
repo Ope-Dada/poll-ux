@@ -27,24 +27,7 @@ export async function loadFromSupabase(): Promise<void> {
             saveUV(uv);
         }
 
-        // Load all comments
-        const { data: cmts, error: ce } = await db
-            .from('poll_comments').select('*').order('created_at', { ascending: true });
-        if (!ce && cmts) {
-            const cm: Record<string, { id: string; voter: string; text: string; sentiment: string; ts: number }[]> = {};
-            cmts.forEach((row: { politician_id: string; id: string; handle: string; comment_text: string; direction: string | null; created_at: string }) => {
-                if (!cm[row.politician_id]) cm[row.politician_id] = [];
-                cm[row.politician_id].push({
-                    id: row.id,
-                    voter: row.handle,
-                    text: row.comment_text,
-                    sentiment: row.direction || 'neutral',
-                    ts: new Date(row.created_at).getTime()
-                });
-            });
-            const { saveCm } = await import('../lib/storage.js');
-            saveCm(cm as Parameters<typeof saveCm>[0]);
-        }
+      
 
         refresh();
     } catch (err) {
