@@ -1,56 +1,17 @@
 import type { Politician, VoteDirection } from '../types.js';
-import { getC, getUV, getCm } from '../lib/storage.js';
-import { fmt, pct, ini, timeAgo, tagClass, escHtml } from '../lib/helpers.js';
+import { getC, getUV } from '../lib/storage.js';
+import { fmt, pct, ini, tagClass } from '../lib/helpers.js';
 import { castVote } from '../api/votes.js';
-import { addComment } from '../api/comments.js';
 import { POLS } from '../data/politicians.js';
 import { showToast } from '../ui/toast.js';
-import { refresh } from '../ui/nav.js';
-
-// Track open comment forms
-export const openForms: Record<string, boolean> = {};
-export const openComments: Record<string, boolean> = {};
 
 export function card(pol: Politician): string {
-    const c = getC(), uv = getUV(), cm = getCm();
+    const c = getC(), uv = getUV();
     const cv = c[pol.id] || { s: 0, o: 0 };
     const { sp, op } = pct(cv.s, cv.o);
     const voted = uv[pol.id], total = cv.s + cv.o;
-    const comments = cm[pol.id] || [];
-    const showForm = !!openForms[pol.id];
-    const showCmts = !!openComments[pol.id];
     const barW = total === 0 ? 0 : sp;
 
-    const commentsList = showCmts && comments.length > 0 ? `
-    <div class="comment-list">
-      ${comments.slice(-5).map(c => `
-        <div class="comment-item">
-          <div class="comment-avatar">${c.voter.charAt(0)}</div>
-          <div class="comment-body">
-            <div class="comment-meta">
-              <span class="comment-voter">${c.voter}</span>
-              <span class="comment-time">${timeAgo(c.ts)}</span>
-              <span class="${c.sentiment === 's' ? 'comment-sent-up' : 'comment-sent-down'}">${c.sentiment === 's' ? '↑ Support' : '↓ Oppose'}</span>
-            </div>
-            <p class="comment-text">${escHtml(c.text)}</p>
-          </div>
-        </div>
-      `).join('')}
-    </div>` : '';
-
-    const commentForm = showForm ? `
-    <div class="comment-form">
-      <textarea class="comment-textarea" id="ctxt-${pol.id}" rows="3"
-        placeholder="Share your perspective on ${pol.name.split(' ')[0]}…"
-        oninput="document.getElementById('cc-${pol.id}').textContent=this.value.length+'/280'"
-        maxlength="280"></textarea>
-      <div class="comment-form-footer">
-        <span class="char-count" id="cc-${pol.id}">0/280</span>
-        <button class="comment-post-btn" onclick="doComment('${pol.id}')">Post</button>
-      </div>
-    </div>` : '';
-
-    // Suppress unused variable warning — op is used in the HTML template for completeness
     void op;
 
     return `<div class="pcard" id="pc-${pol.id}">
@@ -83,15 +44,6 @@ export function card(pol: Politician): string {
         ${voted === 'o' ? 'Opposed ✓' : 'Oppose'}
       </button>
     </div>
-    <div class="comment-divider">
-      <button class="comment-toggle" onclick="toggleComments('${pol.id}')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        ${comments.length} comment${comments.length !== 1 ? 's' : ''}
-      </button>
-      <button class="comment-add-btn" onclick="toggleForm('${pol.id}')">+ Add comment</button>
-    </div>
-    ${commentForm}
-    ${commentsList}
     <button class="ai-btn" onclick="aiInfo('${pol.id}',event)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 16v-4M12 8h.01"/></svg>
       Ask AI about ${pol.name.split(' ')[0]}
@@ -104,28 +56,6 @@ export function doVote(pid: string, t: VoteDirection, e: Event): void {
     const el = document.getElementById('pc-' + pid);
     if (el) { el.classList.add('blip'); setTimeout(() => el.classList.remove('blip'), 200) }
     castVote(pid, t);
-}
-
-export function toggleComments(pid: string): void {
-    openComments[pid] = !openComments[pid];
-    refresh();
-}
-
-export function toggleForm(pid: string): void {
-    openForms[pid] = !openForms[pid];
-    if (openForms[pid]) openComments[pid] = true;
-    refresh();
-    if (openForms[pid]) {
-        setTimeout(() => { const el = document.getElementById('ctxt-' + pid); if (el) (el as HTMLTextAreaElement).focus() }, 50);
-    }
-}
-
-export function doComment(pid: string): void {
-    const el = document.getElementById('ctxt-' + pid) as HTMLTextAreaElement | null;
-    if (!el || !el.value.trim()) return;
-    addComment(pid, el.value);
-    openForms[pid] = false;
-    openComments[pid] = true;
 }
 
 export function aiInfo(pid: string, e: Event): void {
