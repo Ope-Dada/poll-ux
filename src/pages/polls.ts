@@ -28,8 +28,6 @@ export function rPolls(): void {
     if (party) list = list.filter(p => p.party === party);
     // Region filter
     if (region) list = list.filter(p => p.region === region);
-    // Search
-    
     // Sort
     list.sort((a, b) => {
         const ca = c[a.id] || { s: 0, o: 0 }, cb = c[b.id] || { s: 0, o: 0 };
