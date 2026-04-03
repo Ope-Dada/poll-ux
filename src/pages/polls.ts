@@ -1,9 +1,10 @@
 import { getC, getUV } from '../lib/storage.js';
 import { fmt, pct, ini } from '../lib/helpers.js';
 import { POLS } from '../data/politicians.js';
-import { card } from '../ui/card.js';
+import { card, showSkeletons } from '../ui/card.js';
 import { go } from '../ui/nav.js';
 
+export { showSkeletons };
 export let AF = 'all';
 
 export function setF(f: string, btn: HTMLElement): void {
@@ -20,22 +21,19 @@ export function rPolls(): void {
     const c = getC(), uv = getUV();
 
     let list = [...POLS];
-    // Type filter
     if (AF === 'National') list = list.filter(p => p.type === 'National');
     else if (AF === 'Governor') list = list.filter(p => p.type === 'Governor');
     else if (AF === 'Senator') list = list.filter(p => p.type === 'Senator');
-    // Party filter
     if (party) list = list.filter(p => p.party === party);
-    // Region filter
     if (region) list = list.filter(p => p.region === region);
-    // Sort
+
     list.sort((a, b) => {
         const ca = c[a.id] || { s: 0, o: 0 }, cb = c[b.id] || { s: 0, o: 0 };
-        if (sort === 'supported') { const { sp: sa } = pct(ca.s, ca.o), { sp: sb } = pct(cb.s, cb.o); return sb - sa }
-        if (sort === 'opposed') { const { op: oa } = pct(ca.s, ca.o), { op: ob } = pct(cb.s, cb.o); return ob - oa }
-        if (sort === 'polarising') { const { sp: sa } = pct(ca.s, ca.o), { sp: sb } = pct(cb.s, cb.o); return Math.abs(sa - 50) - Math.abs(sb - 50) }
+        if (sort === 'supported') { const { sp: sa } = pct(ca.s, ca.o), { sp: sb } = pct(cb.s, cb.o); return sb - sa; }
+        if (sort === 'opposed') { const { op: oa } = pct(ca.s, ca.o), { op: ob } = pct(cb.s, cb.o); return ob - oa; }
+        if (sort === 'polarising') { const { sp: sa } = pct(ca.s, ca.o), { sp: sb } = pct(cb.s, cb.o); return Math.abs(sa - 50) - Math.abs(sb - 50); }
         if (sort === 'alpha') return a.name.localeCompare(b.name);
-        return (cb.s + cb.o) - (ca.s + ca.o); // trending
+        return (cb.s + cb.o) - (ca.s + ca.o);
     });
 
     const g = document.getElementById('pgrid');
@@ -46,11 +44,24 @@ export function rPolls(): void {
       <div class="empty">
         <div class="empty-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
         <p style="font-size:15px;margin-bottom:4px;font-weight:500">No politicians found</p>
-        <span style="font-size:12.5px;color:var(--mu3)">Try a different search or filter</span>
+        <span style="font-size:12.5px;color:var(--mu3)">Try a different filter</span>
       </div>`;
     }
 
-    // Your votes strip
+    // Scroll to shared politician if URL has ?pol=id
+    const urlPol = new URLSearchParams(location.search).get('pol');
+    if (urlPol) {
+        setTimeout(() => {
+            const el = document.getElementById('pc-' + urlPol);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.classList.add('shared-highlight');
+                setTimeout(() => el.classList.remove('shared-highlight'), 2500);
+                history.replaceState({}, '', location.pathname);
+            }
+        }, 100);
+    }
+
     const votes = Object.entries(uv);
     const yvwrap = document.getElementById('yv-wrap');
     const yvpills = document.getElementById('yv-pills');
@@ -72,13 +83,11 @@ export function rPolls(): void {
         }
     }
 
-    // Sidebar stats
-    const total = POLS.reduce((a, p) => { const cv = c[p.id] || { s: 0, o: 0 }; return a + cv.s + cv.o }, 0);
+    const total = POLS.reduce((a, p) => { const cv = c[p.id] || { s: 0, o: 0 }; return a + cv.s + cv.o; }, 0);
     const sbTotal = document.getElementById('sb-total'); if (sbTotal) sbTotal.textContent = fmt(total);
     const sbPols = document.getElementById('sb-pols'); if (sbPols) sbPols.textContent = String(POLS.length);
     const sbYours = document.getElementById('sb-yours'); if (sbYours) sbYours.textContent = String(votes.length);
 
-    // Sidebar top 5 by support %
     const top5 = [...POLS].map(p => {
         const cv = c[p.id] || { s: 0, o: 0 }; const { sp } = pct(cv.s, cv.o);
         return { pol: p, sp, total: cv.s + cv.o };
@@ -95,6 +104,5 @@ export function rPolls(): void {
       </div>`).join('');
     }
 
-    // Suppress unused import warning
     void go;
 }

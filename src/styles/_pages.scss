@@ -787,3 +787,179 @@
 .ab-note p:last-child {
     margin-bottom: 0;
 }
+// ── SKELETON CARDS ─────────────────────────────────────────────
+.skeleton-card { pointer-events: none; }
+
+.skel {
+    background: linear-gradient(90deg, var(--s2) 25%, var(--s3) 50%, var(--s2) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: 6px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skel-av {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.skel-line { height: 12px; display: block; }
+
+.skel-bar {
+    height: 6px;
+    width: 100%;
+    border-radius: 3px;
+    margin-top: 14px;
+}
+
+.skel-btn {
+    height: 36px;
+    flex: 1;
+    border-radius: var(--r-pill);
+}
+
+// ── TREND BADGES ───────────────────────────────────────────────
+.trend-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: var(--r-pill);
+    letter-spacing: 0.01em;
+}
+
+.trend-up {
+    background: var(--lime-d);
+    color: var(--lime);
+    border: 1px solid var(--lime-b);
+}
+
+.trend-down {
+    background: var(--red-d);
+    color: var(--red);
+    border: 1px solid var(--red-b);
+}
+
+// ── SHARE BUTTON ───────────────────────────────────────────────
+.share-btn {
+    flex: 0 0 auto;
+    padding: 0 14px;
+    color: var(--mu2);
+    border-color: var(--b1);
+}
+
+.share-btn:hover {
+    color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(59, 130, 246, 0.08);
+}
+
+// ── SHARED HIGHLIGHT (when opened via shared link) ─────────────
+.shared-highlight {
+    outline: 2px solid var(--lime);
+    outline-offset: 3px;
+    border-radius: var(--r-md);
+    animation: pulse-highlight 2.5s ease-out forwards;
+}
+
+@keyframes pulse-highlight {
+    0% { outline-color: var(--lime); }
+    100% { outline-color: transparent; }
+}
+
+// ── MOBILE FILTER DRAWER ───────────────────────────────────────
+.filter-toggle-btn {
+    display: none;
+    align-items: center;
+    gap: 7px;
+    padding: 0 16px;
+    height: 31px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--b2);
+    background: var(--s1);
+    color: var(--white);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.filter-drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 200;
+    backdrop-filter: blur(2px);
+}
+
+.filter-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--s2);
+    border-top: 1px solid var(--b2);
+    border-radius: 20px 20px 0 0;
+    padding: 12px 20px 32px;
+    z-index: 201;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.filter-drawer.open { transform: translateY(0); }
+.filter-drawer-overlay.open { display: block; }
+
+.filter-drawer-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--b3);
+    border-radius: 2px;
+    margin: 0 auto 16px;
+}
+
+.filter-drawer-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.filter-drawer-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.filter-drawer select {
+    background: var(--s1);
+    border: 1px solid var(--b2);
+    border-radius: var(--r-sm);
+    color: var(--white);
+    font-size: 13px;
+    padding: 10px 14px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.filter-drawer-close {
+    width: 100%;
+    padding: 13px;
+    border-radius: var(--r-pill);
+    background: var(--lime);
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin-top: 6px;
+}
