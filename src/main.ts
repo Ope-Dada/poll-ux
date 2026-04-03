@@ -29,6 +29,7 @@ window.aiInfo = aiInfo;
 window.go = go;
 window.setF = setF;
 window.setLb = setLb;
+window.rPolls = rPolls;
 window.toggleMnav = toggleMnav;
 window.closeMnav = closeMnav;
 
