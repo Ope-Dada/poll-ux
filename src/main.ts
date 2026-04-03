@@ -13,7 +13,7 @@ RENDERERS.lb = rLb;
 RENDERERS.rg = rRg;
 
 // Expose event handlers to window for inline onclick= attributes in rendered HTML
-import { doVote, toggleComments, toggleForm, doComment, aiInfo } from './ui/card.js';
+import { doVote, aiInfo } from './ui/card.js';
 import { go, toggleMnav, closeMnav } from './ui/nav.js';
 
 window.doVote = doVote;
