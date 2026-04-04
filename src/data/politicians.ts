@@ -12,12 +12,12 @@ export const POLS: Politician[] = [
     },
     // PRESIDENTIAL / NATIONAL
     {
-        id: 'atiku', name: 'Atiku Abubakar', abbr: 'AA', party: 'PDP', type: 'National', role: 'Former Vice President', state: 'Adamawa', region: 'Northeast', color: '#ef4444',
-        bio: "Six-time presidential candidate and former VP under Obasanjo (1999–2007). Prominent businessman and PDP's most persistent flag-bearer.", seeds: { s: 0, o: 0 }
+        id: 'atiku', name: 'Atiku Abubakar', abbr: 'AA', party: 'ADC', type: 'National', role: 'Former Vice President', state: 'Adamawa', region: 'Northeast', color: '#ef4444',
+        bio: 'Six-time presidential candidate and former VP under Obasanjo (1999–2007). Left PDP in November 2025 to join the ADC opposition coalition targeting the 2027 presidential election.', seeds: { s: 0, o: 0 }
     },
     {
-        id: 'obi', name: 'Peter Obi', abbr: 'PO', party: 'Labour', type: 'National', role: 'Former Governor, Anambra', state: 'Anambra', region: 'Southeast', color: '#f59e0b',
-        bio: '2023 presidential candidate who ignited the mass "Obidient" youth movement. Former Governor of Anambra (2006–2014). Known for fiscal discipline.', seeds: { s: 0, o: 0 }
+        id: 'obi', name: 'Peter Obi', abbr: 'PO', party: 'ADC', type: 'National', role: 'Former Governor, Anambra', state: 'Anambra', region: 'Southeast', color: '#f59e0b',
+        bio: '2023 Labour Party presidential candidate who ignited the \"Obidient\" youth movement. Defected to ADC in December 2025 to lead opposition coalition ahead of 2027 elections.', seeds: { s: 0, o: 0 }
     },
     {
         id: 'kwank', name: 'Rabiu Kwankwaso', abbr: 'RK', party: 'NNPP', type: 'National', role: 'Former Governor / Senator', state: 'Kano', region: 'Northwest', color: '#a78bfa',
@@ -35,17 +35,17 @@ export const POLS: Politician[] = [
         id: 'sar', name: 'Bukola Saraki', abbr: 'BS', party: 'PDP', type: 'National', role: 'Former Senate President', state: 'Kwara', region: 'North Central', color: '#60a5fa',
         bio: 'Former President of the Nigerian Senate (2015–2019) and former Governor of Kwara. His 30-year family dynasty was ended by AbdulRazaq\'s "O To Ge" movement.', seeds: { s: 0, o: 0 }
     },
-    {
-        id: 'elf', name: 'Nasir el-Rufai', abbr: 'NR', party: 'APC', type: 'National', role: 'Former Kaduna Governor', state: 'Kaduna', region: 'Northwest', color: '#e879f9',
-        bio: 'Former Governor of Kaduna (2015–2023) and former FCT Minister. Known for controversial governance style, urban renewal projects, and blunt commentary.', seeds: { s: 0, o: 0 }
+  {
+        id: 'elf', name: 'Nasir el-Rufai', abbr: 'NR', party: 'ADC', type: 'National', role: 'Former Kaduna Governor', state: 'Kaduna', region: 'Northwest', color: '#e879f9',
+        bio: 'Former Governor of Kaduna (2015–2023) and former FCT Minister. Left APC in 2025 to join the ADC opposition coalition alongside Atiku and Peter Obi ahead of 2027.', seeds: { s: 0, o: 0 }
     },
     {
         id: 'wike', name: 'Nyesom Wike', abbr: 'NW', party: 'PDP', type: 'National', role: 'FCT Minister', state: 'Rivers', region: 'South-South', color: '#ec4899',
         bio: 'FCT Minister since 2023. Former two-term Governor of Rivers. Known for aggressive infrastructure delivery and high-stakes political brinkmanship.', seeds: { s: 0, o: 0 }
     },
     {
-        id: 'ame', name: 'Rotimi Amaechi', abbr: 'RA', party: 'APC', type: 'National', role: 'Former Minister of Transportation', state: 'Rivers', region: 'South-South', color: '#84cc16',
-        bio: 'Former Speaker of Rivers SOHA, two-term Governor of Rivers, and Minister of Transportation under Buhari.', seeds: { s: 0, o: 0 }
+        id: 'ame', name: 'Rotimi Amaechi', abbr: 'RA', party: 'ADC', type: 'National', role: 'Former Minister of Transportation', state: 'Rivers', region: 'South-South', color: '#84cc16',
+        bio: 'Former Speaker of Rivers SOHA, two-term Governor of Rivers, Minister of Transportation under Buhari. Resigned from APC in July 2025 to join the ADC opposition coalition.', seeds: { s: 0, o: 0 }
     },
     {
         id: 'dat', name: 'Datti Baba-Ahmed', abbr: 'DB', party: 'Labour', type: 'National', role: '2023 VP Candidate', state: 'Kaduna', region: 'Northwest', color: '#34d399',
