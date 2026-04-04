@@ -1,5 +1,5 @@
 export type Zone = 'Southwest' | 'Southeast' | 'South-South' | 'Northwest' | 'Northeast' | 'North Central';
-export type Party = 'APC' | 'PDP' | 'Labour' | 'NNPP' | 'APGA' | 'Independent';
+export type Party = 'APC' | 'PDP' | 'Labour' | 'NNPP' | 'APGA' | 'Independent' | 'ADC';
 export type PoliticianType = 'National' | 'Governor' | 'Senator';
 export type VoteDirection = 's' | 'o';
 export type PageId = 'home' | 'polls' | 'lb' | 'rg' | 'about';
