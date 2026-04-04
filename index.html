@@ -182,49 +182,7 @@
     </select>
 </div>
 
-<!-- Mobile filter drawer -->
-<div class="filter-drawer-overlay" id="filter-overlay" onclick="closeFilterDrawer()"></div>
-<div class="filter-drawer" id="filter-drawer">
-    <div class="filter-drawer-handle"></div>
-    <div class="filter-drawer-title">Filter &amp; Sort</div>
-    <div class="filter-drawer-group">
-        <button class="fbtn on" onclick="setF('all',this);closeFilterDrawer()">All</button>
-        <button class="fbtn" onclick="setF('National',this);closeFilterDrawer()">National</button>
-        <button class="fbtn" onclick="setF('Governor',this);closeFilterDrawer()">Governors</button>
-        <button class="fbtn" onclick="setF('Senator',this);closeFilterDrawer()">Senators</button>
-    </div>
-    <div class="filter-drawer-group">
-        <select class="sel-filter" style="width:100%" onchange="document.getElementById('sel-party').value=this.value;rPolls()" aria-label="Filter by party">
-            <option value="">All Parties</option>
-            <option>APC</option>
-            <option>PDP</option>
-            <option>Labour</option>
-            <option>NNPP</option>
-            <option>APGA</option>
-        </select>
-    </div>
-    <div class="filter-drawer-group">
-        <select class="sel-filter" style="width:100%" onchange="document.getElementById('sel-region').value=this.value;rPolls()" aria-label="Filter by region">
-            <option value="">All Regions</option>
-            <option>Southwest</option>
-            <option>Southeast</option>
-            <option>South-South</option>
-            <option>Northwest</option>
-            <option>Northeast</option>
-            <option>North Central</option>
-        </select>
-    </div>
-    <div class="filter-drawer-group">
-        <select class="sel-filter" style="width:100%" onchange="document.getElementById('sel-sort').value=this.value;rPolls()" aria-label="Sort by">
-            <option value="trending">Trending</option>
-            <option value="supported">Most Supported</option>
-            <option value="opposed">Most Opposed</option>
-            <option value="polarising">Polarising</option>
-            <option value="alpha">A → Z</option>
-        </select>
-    </div>
-    <button class="filter-drawer-close" onclick="closeFilterDrawer()">Done</button>
-</div>
+
             <!-- YOUR VOTES STRIP (shown when user has votes) -->
             <div class="your-votes" id="yv-wrap" style="display:none">
                 <div class="yv-card">
@@ -357,7 +315,50 @@
                 </div>
             </div>
         </div>
-
+<!-- Mobile filter drawer -->
+<div class="filter-drawer-overlay" id="filter-overlay" onclick="closeFilterDrawer()"></div>
+<div class="filter-drawer" id="filter-drawer">
+    <div class="filter-drawer-handle"></div>
+    <div class="filter-drawer-title">Filter &amp; Sort</div>
+    <div class="filter-drawer-group">
+        <button class="fbtn on" onclick="setF('all',this);closeFilterDrawer()">All</button>
+        <button class="fbtn" onclick="setF('National',this);closeFilterDrawer()">National</button>
+        <button class="fbtn" onclick="setF('Governor',this);closeFilterDrawer()">Governors</button>
+        <button class="fbtn" onclick="setF('Senator',this);closeFilterDrawer()">Senators</button>
+    </div>
+    <div class="filter-drawer-group">
+        <select class="sel-filter" style="width:100%" onchange="document.getElementById('sel-party').value=this.value;rPolls()" aria-label="Filter by party">
+            <option value="">All Parties</option>
+            <option>APC</option>
+            <option>PDP</option>
+            <option>Labour</option>
+            <option>NNPP</option>
+            <option>APGA</option>
+            <option>ADC</option>
+        </select>
+    </div>
+    <div class="filter-drawer-group">
+        <select class="sel-filter" style="width:100%" onchange="document.getElementById('sel-region').value=this.value;rPolls()" aria-label="Filter by region">
+            <option value="">All Regions</option>
+            <option>Southwest</option>
+            <option>Southeast</option>
+            <option>South-South</option>
+            <option>Northwest</option>
+            <option>Northeast</option>
+            <option>North Central</option>
+        </select>
+    </div>
+    <div class="filter-drawer-group">
+        <select class="sel-filter" style="width:100%" onchange="document.getElementById('sel-sort').value=this.value;rPolls()" aria-label="Sort by">
+            <option value="trending">Trending</option>
+            <option value="supported">Most Supported</option>
+            <option value="opposed">Most Opposed</option>
+            <option value="polarising">Polarising</option>
+            <option value="alpha">A → Z</option>
+        </select>
+    </div>
+    <button class="filter-drawer-close" onclick="closeFilterDrawer()">Done</button>
+</div>
     </main>
 
     <!-- TOAST -->
