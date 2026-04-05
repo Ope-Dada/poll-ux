@@ -1,6 +1,6 @@
 import type { Politician, VoteDirection } from '../types.js';
-import { getC, getUV } from '../lib/storage.js';
-import { fmt, pct, ini, tagClass } from '../lib/helpers.js';
+import { getC, getUV, getLV } from '../lib/storage.js';
+import { fmt, pct, ini, tagClass, timeAgo } from '../lib/helpers.js';
 import { castVote } from '../api/votes.js';
 import { POLS } from '../data/politicians.js';
 import { showToast } from '../ui/toast.js';
@@ -45,6 +45,8 @@ export function card(pol: Politician): string {
     const voted = uv[pol.id], total = cv.s + cv.o;
     const barW = total === 0 ? 0 : sp;
     const trend = getTrend(pol.id, sp);
+    const lv = getLV();
+    const lastVotedStr = lv[pol.id] ? timeAgo(lv[pol.id]) : '';
 
     void op;
 
@@ -68,6 +70,7 @@ export function card(pol: Politician): string {
         <span class="vn-s">${total === 0 ? 'No votes yet' : fmt(cv.s) + ' support' + (total > 0 ? ' · ' + sp + '%' : '')}</span>
         <span class="vn-o">${total > 0 ? fmt(cv.o) + ' oppose' : ''}</span>
       </div>
+      ${total > 0 ? `<div class="vote-meta"><span class="vote-total">${fmt(total)} votes total</span>${lastVotedStr ? `<span class="vote-last">· ${lastVotedStr}</span>` : ''}</div>` : ''}
     </div>
     <div class="vbtns">
       <button class="vbtn ${voted === 's' ? 'vs' : ''}" onclick="doVote('${pol.id}','s',event)">

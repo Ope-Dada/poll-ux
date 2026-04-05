@@ -6,6 +6,7 @@ export const UK = 'pollux_uv1';
 export const CK = 'pollux_cm1';
 export const HK = 'pollux_usr1';
 export const UID_KEY = 'pollux_uid';
+export const LV_KEY = 'pollux_lv1';
 
 export function getC(): CountStore {
     try { const d = localStorage.getItem(SK); if (d) return JSON.parse(d); } catch (e) { }
@@ -33,6 +34,15 @@ export function getCm(): CommentStore {
 
 export function saveCm(c: CommentStore): void {
     try { localStorage.setItem(CK, JSON.stringify(c)) } catch (e) { }
+}
+
+// Last voted timestamps — Record<politician_id, unix_ms>
+export function getLV(): Record<string, number> {
+    try { return JSON.parse(localStorage.getItem(LV_KEY) || '{}') } catch (e) { return {} }
+}
+
+export function saveLV(lv: Record<string, number>): void {
+    try { localStorage.setItem(LV_KEY, JSON.stringify(lv)) } catch (e) { }
 }
 
 export function getHandle(): string {
