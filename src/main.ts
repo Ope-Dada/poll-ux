@@ -5,11 +5,13 @@ import { rHome } from './pages/home.js';
 import { rPolls, setF, showSkeletons } from './pages/polls.js';
 import { rLb, setLb } from './pages/leaderboard.js';
 import { rRg } from './pages/regions.js';
+import { rVerdict } from './pages/verdict.js';
 
 RENDERERS.home = rHome;
 RENDERERS.polls = rPolls;
 RENDERERS.lb = rLb;
 RENDERERS.rg = rRg;
+RENDERERS.verdict = rVerdict;
 
 import { doVote, aiInfo, shareCard } from './ui/card.js';
 import { go, toggleMnav, closeMnav } from './ui/nav.js';

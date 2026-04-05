@@ -2,7 +2,7 @@ export type Zone = 'Southwest' | 'Southeast' | 'South-South' | 'Northwest' | 'No
 export type Party = 'APC' | 'PDP' | 'Labour' | 'NNPP' | 'APGA' | 'Independent' | 'ADC';
 export type PoliticianType = 'National' | 'Governor' | 'Senator';
 export type VoteDirection = 's' | 'o';
-export type PageId = 'home' | 'polls' | 'lb' | 'rg' | 'about';
+export type PageId = 'home' | 'polls' | 'lb' | 'rg' | 'about' | 'verdict';
 export type SortMode = 'trending' | 'supported' | 'opposed' | 'polarising' | 'alpha';
 export type LeaderboardMode = 'support' | 'oppose' | 'votes';
 

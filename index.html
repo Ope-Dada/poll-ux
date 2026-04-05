@@ -49,6 +49,7 @@
             <li><a onclick="go('lb')" id="nl-lb">Leaderboard</a></li>
             <li><a onclick="go('rg')" id="nl-rg">Regions</a></li>
             <li><a onclick="go('about')" id="nl-about">About</a></li>
+            <li><a onclick="go('verdict')" id="nl-verdict">Verdict</a></li>
         </ul>
         <button class="nav-cta" onclick="go('polls')">Cast Your Vote</button>
         <button class="hbg" id="hbg" onclick="toggleMnav()" aria-expanded="false">
@@ -61,6 +62,7 @@
         <a onclick="go('lb');closeMnav()" id="mn-lb">Leaderboard</a>
         <a onclick="go('rg');closeMnav()" id="mn-rg">Regions</a>
         <a onclick="go('about');closeMnav()" id="mn-about">About</a>
+        <a onclick="go('verdict');closeMnav()" id="mn-verdict">Verdict</a>
     </div>
 
     <main>
@@ -362,6 +364,17 @@
     <button class="filter-drawer-close" onclick="closeFilterDrawer()">Done</button>
 </div>
     </main>
+    
+<!-- ════════════════ VERDICT ════════════════ -->
+        <div class="page" id="pg-verdict">
+            <div class="vd-wrap">
+                <div class="vd-head">
+                    <h1 class="page-title">Nigeria's Verdict</h1>
+                    <p class="page-sub">Live vote activity — today, this week, this month. Updated in real time.</p>
+                </div>
+                <div id="vd-body"></div>
+            </div>
+        </div>
 
     <!-- TOAST -->
     <div class="toast" id="toast" role="status" aria-live="polite">

@@ -5,16 +5,17 @@ export const PAGES: Record<PageId, string> = {
     polls: 'pg-polls',
     lb: 'pg-lb',
     rg: 'pg-rg',
-    about: 'pg-about'
+    about: 'pg-about',
+    verdict: 'pg-verdict'
 };
 
-// Filled in by main.ts after all page modules load — avoids circular imports
 export const RENDERERS: Record<PageId, () => void> = {
     home: () => {},
     polls: () => {},
     lb: () => {},
     rg: () => {},
-    about: () => {}
+    about: () => {},
+    verdict: () => {}
 };
 
 export function go(id: PageId): void {
@@ -22,7 +23,7 @@ export function go(id: PageId): void {
         const el = document.getElementById(pid); if (el) el.classList.remove('on');
     });
     const pg = document.getElementById(PAGES[id]); if (pg) pg.classList.add('on');
-    (['home', 'polls', 'lb', 'rg', 'about'] as PageId[]).forEach(n => {
+    (['home', 'polls', 'lb', 'rg', 'about', 'verdict'] as PageId[]).forEach(n => {
         (['nl-' + n, 'mn-' + n]).forEach(eid => {
             const el = document.getElementById(eid);
             if (el) el.className = n === id ? 'on' : '';
