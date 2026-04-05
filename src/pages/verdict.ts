@@ -85,7 +85,7 @@ function snapshotAge(period: 'day' | 'week' | 'month'): string {
 }
 
 function renderMoverRow(m: Mover, rank: number): string {
-    const supPct = m.newVotes > 0 ? Math.round((m.newSupport / m.newVotes) * 100) : 0;
+   
     const rankCls = rank === 1 ? 'vd-rank-g' : rank === 2 ? 'vd-rank-s' : rank === 3 ? 'vd-rank-b' : 'vd-rank-n';
     return `
     <div class="vd-row">
