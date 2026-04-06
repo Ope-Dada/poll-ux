@@ -159,7 +159,7 @@ export function aiInfo(pid: string, e: Event): void {
 Be concise, factual, and neutral.`;
     if (navigator.clipboard) {
         navigator.clipboard.writeText(prompt)
-            .then(() => showToast('Prompt copied — paste into Claude.ai 🤖', '#a78bfa'))
+            .then(() => showToast('Prompt copied — paste into any AI tool of your choice', '#a78bfa'))
             .catch(() => fbCopy(prompt));
     } else {
         fbCopy(prompt);
@@ -170,7 +170,7 @@ export function fbCopy(txt: string): void {
     const el = document.createElement('textarea'); el.value = txt;
     el.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(el);
     el.focus(); el.select();
-    try { document.execCommand('copy'); showToast('Copied! Paste into Claude.ai 🤖', '#a78bfa'); }
+   try { document.execCommand('copy'); showToast('Prompt copied — paste into any AI tool of your choice', '#a78bfa'); }
     catch { showToast('Could not copy — try again', '#ef4444'); }
     document.body.removeChild(el);
 }
