@@ -119,8 +119,9 @@ function renderSection(period: 'day' | 'week' | 'month', movers: Mover[], fresh:
            </div>`
         : `<div class="vd-rows">${movers.map((m, i) => renderMoverRow(m, i + 1)).join('')}</div>`;
 
+const hasData = !fresh && movers.length > 0;
     return `
-    <div class="vd-section">
+    <div class="vd-section${hasData ? ' has-data' : ''}">
       <div class="vd-sec-hd">
         <div>
           <div class="vd-sec-icon">${icon}</div>
