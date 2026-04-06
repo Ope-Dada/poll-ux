@@ -168,9 +168,9 @@ export function rVerdict(): void {
       </div>
     </div>
 
-    ${renderSection('day',   dayMovers,   dayFresh,   '🔥', "Today's Most Active")}
-    ${renderSection('week',  weekMovers,  weekFresh,  '📈', "This Week's Top Movers")}
-    ${renderSection('month', monthMovers, monthFresh, '🏆', "This Month's Leaders")}
+    ${renderSection('day',   dayMovers,   dayFresh,   '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>', "Today\'s Most Active")}
+    ${renderSection('week',  weekMovers,  weekFresh,  '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>', "This Week\'s Top Movers")}
+    ${renderSection('month', monthMovers, monthFresh, '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', "This Month\'s Leaders")}
 
     <p class="vd-note">Verdict tracks vote activity since your first visit each period. Data updates in real time as votes are cast across all devices.</p>
     `;
