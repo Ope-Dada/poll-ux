@@ -20,9 +20,9 @@ export const POLS: Politician[] = [
         bio: '2023 Labour Party presidential candidate who ignited the \"Obidient\" youth movement. Defected to ADC in December 2025 to lead opposition coalition ahead of 2027 elections.', seeds: { s: 0, o: 0 }
     },
     {
-        id: 'kwank', name: 'Rabiu Kwankwaso', abbr: 'RK', party: 'NNPP', type: 'National', role: 'Former Governor / Senator', state: 'Kano', region: 'Northwest', color: '#a78bfa',
-        bio: 'Leader of the powerful Kwankwasiyya movement. Former Governor of Kano twice, former Minister of Defence, NNPP 2023 presidential candidate.', seeds: { s: 0, o: 0 }
-    },
+    id: 'kwank', name: 'Rabiu Kwankwaso', abbr: 'RK', party: 'ADC', type: 'National', role: 'Former Governor / Senator', state: 'Kano', region: 'Northwest', color: '#a78bfa',
+    bio: 'Leader of the powerful Kwankwasiyya movement. Former Governor of Kano twice, former Minister of Defence, NNPP 2023 presidential candidate. Joined the ADC opposition coalition in 2025.', seeds: { s: 0, o: 0 }
+},
     {
         id: 'osin', name: 'Yemi Osinbajo', abbr: 'YO', party: 'APC', type: 'National', role: 'Former Vice President', state: 'Lagos', region: 'Southwest', color: '#06b6d4',
         bio: 'Former VP under Buhari (2015–2023). Senior Advocate of Nigeria (SAN), pastor, and former Lagos AG. One of Nigeria\'s most respected technocrats.', seeds: { s: 0, o: 0 }
